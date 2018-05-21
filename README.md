@@ -38,6 +38,8 @@ export default {
 
 ## content
 
+> String
+
 ```javascript
 this.$dialog({
   title: 'foo',
@@ -47,9 +49,97 @@ this.$dialog({
 
 ## size
 
+> String
+
+We provide three size: 'lg', 'md', 'sm'
+
+Default size is **md**
+
 ```javascript
 this.$dialog({
   title: 'foo',
   size: 'lg',
 })
 ```
+
+## accept
+
+> Object
+
+When you wanna use dialog as confirm's accept action
+
+And you can do anything when user accept confirm by config **callback** property 
+
+```javascript
+export default {
+  methods: {
+    deleteConfirm() {
+      this.$dialog({
+        title: 'Delete',
+        content: 'Do you really want to delete',
+        accept: {
+          callback: @onAccept,
+        },
+      })
+    },
+    onAccept() {
+      // do something here
+    },
+  },
+},
+```
+
+**accept.label**
+
+Custom accept button label
+
+Default is 'Accept'
+
+> String
+
+```javascript
+this.$dialog({
+  // ...
+  accept: {
+    label: 'Yes',
+    callback: someCallback,
+  }
+})
+```
+
+**accept.style**
+
+Custom accept button style by using bootstrap class name
+
+Default is 'primary'
+
+> String
+
+```javascript
+this.$dialog({
+  // ...
+  accept: {
+    style: 'success',
+    callback: someCallback,
+  }
+})
+```
+
+**accept.style**
+
+Custom accept button style by using bootstrap class name
+
+Default is 'primary'
+
+> String
+
+```javascript
+this.$dialog({
+  // ...
+  accept: {
+    style: 'success',
+    callback: someCallback,
+  }
+})
+```
+
