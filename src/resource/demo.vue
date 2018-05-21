@@ -2,9 +2,13 @@
   <div data-role="demo">
     <h1>Ciao Vue Dialog</h1>
 
-    <button @click="base">base</button>
+    <button @click="base">Base</button>
 
-    <button @click="withoutAnyButton">withoutAnyButton</button>
+    <button @click="large">Large</button>
+    <button @click="small">Small</button>
+
+    <button @click="withoutAnyButton">Without Any Button</button>
+
     <VueDialog/>
   </div>
 </template>
@@ -22,11 +26,22 @@ export default {
     base() {
       this.$dialog('base')
     },
+    large() {
+      this.$dialog({
+        title: 'Large Size',
+        size: 'lg',
+      })
+    },
+    small() {
+      this.$dialog({
+        title: 'Small Size',
+        size: 'sm',
+      })
+    },
     withoutAnyButton() {
       this.$dialog({
         title: 'foo',
         content: 'bar...',
-        size: 'lg',
         accept: {
           hide: true,
         },

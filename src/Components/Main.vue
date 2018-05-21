@@ -72,11 +72,9 @@ export default {
     onActive(options) {
       this.init(options)
       this.active = true
-      console.warn('on active', options)
     },
     close() {
       this.active = false
-      console.warn('close...')
     },
   },
   computed: {

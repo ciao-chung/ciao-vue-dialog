@@ -12,6 +12,10 @@
     <!--body-->
     <div ciao-vue-dialog="body" v-if="hasBody">
       <div v-if="config.content">{{config.content}}</div>
+
+      <component
+        v-if="config.component"
+        :is="config.component" />
     </div>
 
     <!--footer-->

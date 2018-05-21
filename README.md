@@ -2,6 +2,12 @@
 
 > Vue Dialog Component
 
+## Dependencies
+
+* animate.css
+* bootstrap 3/4 (just for footer button, your can custom it's class name for your bootstrap version)
+* vue 2.x
+
 ## Base Usage
 
 **Install VueDialog component in App.vue**
