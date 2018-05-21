@@ -183,7 +183,7 @@ Custom dismiss button style by using bootstrap class name
 
 Or if you want to use bootstrap 4 button's class name
 
-Default is 'default'
+Default is 'light'
 
 > String
 
@@ -191,7 +191,7 @@ Default is 'default'
 this.$dialog({
   // ...
   dismiss: {
-    style: 'default',
+    style: 'warning',
     callback: someCallback,
   }
 })

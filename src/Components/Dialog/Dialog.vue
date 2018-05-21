@@ -20,11 +20,17 @@
 
     <!--footer-->
     <div ciao-vue-dialog="footer" v-if="hasFooter">
-      <button class="btn" :class="'btn-'+config.accept.style" v-if="config.accept">
+      <button class="btn"
+        v-if="config.accept"
+        @click="onAccept"
+        :class="'btn-'+config.accept.style">
         {{config.accept.label}}
       </button>
 
-      <button class="btn" :class="'btn-'+config.dismiss.style" v-if="config.dismiss">
+      <button class="btn"
+        v-if="config.dismiss"
+        @click="onDismiss"
+        :class="'btn-'+config.dismiss.style">
         {{config.dismiss.label}}
       </button>
     </div>
@@ -46,9 +52,19 @@ export default {
       },
     },
   },
-  created() {
-  },
   methods: {
+    onAccept() {
+      this.close()
+      if(!this.config.accept) return
+      if(!(this.config.accept.callback instanceof Function)) return
+      this.config.accept.callback()
+    },
+    onDismiss() {
+      this.close()
+      if(!this.config.dismiss) return
+      if(!(this.config.dismiss.callback instanceof Function)) return
+      this.config.dismiss.callback()
+    },
     close() {
       this.$emit('close')
     },

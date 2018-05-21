@@ -7,7 +7,7 @@
     <button @click="large">Large</button>
     <button @click="small">Small</button>
 
-    <button @click="withoutAnyButton">Without Any Button</button>
+    <button @click="accept_dismiss">Accept/Dismiss</button>
 
     <VueDialog/>
   </div>
@@ -38,15 +38,18 @@ export default {
         size: 'sm',
       })
     },
-    withoutAnyButton() {
+    accept_dismiss() {
       this.$dialog({
-        title: 'foo',
-        content: 'bar...',
+        title: 'Accept/Dismiss',
         accept: {
-          hide: true,
+          callback: () => {
+            alert('after accept')
+          },
         },
         dismiss: {
-          hide: true,
+          callback: () => {
+            alert('after dismiss')
+          },
         },
       })
     },

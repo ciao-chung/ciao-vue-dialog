@@ -59,7 +59,7 @@ export default {
 
       this.config.dismiss = {
         label: config.label || 'Dismiss',
-        style: config.style || 'default',
+        style: config.style || 'light',
         callback: config.callback || null,
       }
     },
