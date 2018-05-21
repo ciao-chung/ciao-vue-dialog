@@ -68,7 +68,9 @@ this.$dialog({
 
 When you wanna use dialog as confirm's accept action
 
-And you can do anything when user accept confirm by config **callback** property 
+### accept.callback
+
+You can do anything when user accept confirm by config **callback** property 
 
 ```javascript
 export default {
@@ -83,13 +85,13 @@ export default {
       })
     },
     onAccept() {
-      // do something here
+      // do something here after accept
     },
   },
 },
 ```
 
-**accept.label**
+### accept.label
 
 Custom accept button label
 
@@ -107,7 +109,7 @@ this.$dialog({
 })
 ```
 
-**accept.style**
+### accept.style
 
 Custom accept button style by using bootstrap class name
 
@@ -125,21 +127,72 @@ this.$dialog({
 })
 ```
 
-**accept.style**
 
-Custom accept button style by using bootstrap class name
+## dismiss
 
-Default is 'primary'
+> Object
+
+When you wanna use dialog as confirm's dismiss action
+
+### dismiss.callback
+
+You can do anything when user dismiss confirm by config **callback** property
+
+If you don't want to anything, you can skip this property 
+
+```javascript
+export default {
+  methods: {
+    deleteConfirm() {
+      this.$dialog({
+        title: 'Delete',
+        content: 'Do you really want to delete',
+        dismiss: {
+          callback: @onDismiss,
+        },
+      })
+    },
+    onDismiss() {
+      // do something here after dismiss
+    },
+  },
+},
+```
+
+### dismiss.label
+
+Custom dismiss button label
+
+Default is 'Dismiss'
 
 > String
 
 ```javascript
 this.$dialog({
   // ...
-  accept: {
-    style: 'success',
+  dismiss: {
+    label: 'Cancel',
     callback: someCallback,
   }
 })
 ```
 
+### dismiss.style
+
+Custom dismiss button style by using bootstrap class name
+
+Or if you want to use bootstrap 4 button's class name
+
+Default is 'default'
+
+> String
+
+```javascript
+this.$dialog({
+  // ...
+  dismiss: {
+    style: 'default',
+    callback: someCallback,
+  }
+})
+```
