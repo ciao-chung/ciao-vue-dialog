@@ -3,6 +3,7 @@
     <div ciao-vue-dialog="overlay" :active="active" @click="close"></div>
 
     <Dialog
+      ref="dialog"
       @close="close"
       :active="active"
       :config="config" />
@@ -46,6 +47,7 @@ export default {
       }
 
       this.config.accept = {
+        commitOnEnter: config.commitOnEnter || false,
         label: config.label || 'Accept',
         style: config.style || 'primary',
         callback: config.callback || null,
@@ -58,6 +60,7 @@ export default {
       }
 
       this.config.dismiss = {
+        commitOnEsc: config.commitOnEsc || false,
         label: config.label || 'Dismiss',
         style: config.style || 'light',
         callback: config.callback || null,
@@ -72,9 +75,20 @@ export default {
     onActive(options) {
       this.init(options)
       this.active = true
+      window.addEventListener('keydown', this.setupKeyEvent)
     },
     close() {
       this.active = false
+      window.removeEventListener('keydown', this.setupKeyEvent)
+    },
+    setupKeyEvent(event) {
+      if(this.config.accept) {
+        if(this.config.accept.commitOnEnter ||event.which == 13) this.$refs.dialog.onAccept()
+      }
+
+      if(this.config.dismiss) {
+        if(this.config.dismiss.commitOnEsc || event.which == 27) this.$refs.dialog.onDismiss()
+      }
     },
   },
   computed: {
