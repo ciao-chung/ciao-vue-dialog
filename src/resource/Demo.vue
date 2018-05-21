@@ -5,9 +5,12 @@
     <button @click="base">Base</button>
 
     <button @click="large">Large</button>
+
     <button @click="small">Small</button>
 
-    <button @click="accept_dismiss">Accept/Dismiss</button>
+    <button @click="acceptDismiss">Accept/Dismiss</button>
+
+    <button @click="customComponent">Custom Component</button>
 
     <VueDialog/>
   </div>
@@ -15,6 +18,7 @@
 
 <script>
 import Vue from 'vue'
+import CustomComponent from 'resource/CustomComponent'
 import Dialog from 'src/index.js'
 Vue.use(Dialog)
 export default {
@@ -38,7 +42,7 @@ export default {
         size: 'sm',
       })
     },
-    accept_dismiss() {
+    acceptDismiss() {
       this.$dialog({
         title: 'Accept/Dismiss',
         accept: {
@@ -51,6 +55,13 @@ export default {
             alert('after dismiss')
           },
         },
+      })
+    },
+    customComponent() {
+      this.$dialog({
+        title: 'Custom Component',
+        size: 'lg',
+        component: CustomComponent,
       })
     },
   },

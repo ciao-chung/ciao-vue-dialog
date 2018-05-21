@@ -196,3 +196,23 @@ this.$dialog({
   }
 })
 ```
+
+## component
+
+> Vue Component
+
+You can inject a custom vue component into dialog
+
+```javascript
+import CustomComponent from 'path/to/custom/component'
+export default {
+  methods: {
+    showDialog() {
+      this.$dialog({
+        title: 'Custom Component',
+        component: CustomComponent,
+      })
+    },
+  },
+}
+```
