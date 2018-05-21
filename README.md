@@ -8,6 +8,20 @@
 * bootstrap 3/4 (just for footer button, your can custom it's class name for your bootstrap version)
 * vue 2.x
 
+## Installation
+
+npm 
+
+```bash
+npm install ciao-vue-dialog --save
+```
+
+or yarn
+
+```bash
+yarn add ciao-vue-dialog
+```
+
 ## Base Usage
 
 **Install VueDialog component in App.vue**
