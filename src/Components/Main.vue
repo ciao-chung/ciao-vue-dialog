@@ -1,26 +1,47 @@
 <template>
-  <div ciao-vue-dialog="dialog" :active="active">
+  <div ciao-vue-dialog="dialog-wrap" :active="active">
     <div ciao-vue-dialog="overlay" :active="active" @click="close"></div>
 
-    <div ciao-vue-dialog="main" :class="dialogClass">
-      main
-    </div>
+    <Dialog
+      :active="active"
+      :config="config" />
   </div>
 </template>
 
 <script>
-import { events } from 'components/events'
+import { events } from 'Components/events'
+import Dialog from 'Components/Dialog/Dialog.vue'
 export default {
   data() {
     return {
       active: false,
+      config: {},
     }
   },
   created() {
     events.$on('dialog', this.onActive)
   },
   methods: {
+    init(options) {
+      this.setConfigAsDefault()
+
+      if(typeof options == 'string') {
+        this.config.title = options
+        return
+      }
+
+      this.config.title = options.title
+      if(options.content) this.config.content = options.content
+      this.config.size = options.size || 'md'
+    },
+    setConfigAsDefault() {
+      this.config = {
+        title: null,
+        content: null,
+      }
+    },
     onActive(options) {
+      this.init(options)
       this.active = true
       console.warn('on active', options)
     },
@@ -37,18 +58,16 @@ export default {
       }
     },
   },
-  components: {},
+  components: {
+    Dialog,
+  },
 }
 </script>
 
 <style src="animate.css/animate.css"></style>
 <style lang="sass" type="text/sass" scoped>
 $transition-time: 0.5s
-@mixin setPosition($width)
-  position: absolute
-  top: 50vh
-  left: calc(50vw - #{$width}/2)
-div[ciao-vue-dialog="dialog"]
+div[ciao-vue-dialog="dialog-wrap"]
   pointer-events: none
   position: fixed
   top: 0
@@ -66,10 +85,4 @@ div[ciao-vue-dialog="dialog"]
     &[active]
       background-color: rgba(0, 0, 0, 0.5)
       transition: all $transition-time ease
-  div[ciao-vue-dialog="main"]
-    @include setPosition(240px)
-    width: 240px
-    height: 60px
-    border-radius: 4px
-    background-color: white
 </style>

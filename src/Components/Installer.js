@@ -1,6 +1,6 @@
-import Dialog from './Dialog'
+import Main from './Main'
 import Vue from 'vue'
-import { events } from 'components/events'
+import { events } from 'Components/events'
 
 class Installer {
   constructor() {
@@ -10,7 +10,7 @@ class Installer {
     if(this.isInstalled) return
 
     this.isInstalled = true
-    Vue.component('VueDialog', Dialog)
+    Vue.component('VueDialog', Main)
 
     Vue.prototype.$dialog = (options) => {
       events.$emit('dialog', options)

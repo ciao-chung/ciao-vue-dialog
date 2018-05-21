@@ -1,2 +1,2 @@
-import CiaoVueDialog from './components/Installer'
+import CiaoVueDialog from './Components/Installer'
 export default CiaoVueDialog

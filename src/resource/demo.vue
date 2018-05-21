@@ -24,7 +24,10 @@ export default {
   },
   methods: {
     triggerDialog() {
-      this.$dialog('foobar')
+      this.$dialog({
+        title: 'foobar',
+        size: 'lg',
+      })
     },
   },
 }
