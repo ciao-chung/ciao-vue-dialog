@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Demo from 'resource/Demo.vue'
+import Demo from 'Resource/Demo.vue'
 
 Vue.use(Router)
 

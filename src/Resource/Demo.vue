@@ -18,7 +18,7 @@
 
 <script>
 import Vue from 'vue'
-import CustomComponent from 'resource/CustomComponent'
+import CustomComponent from 'Resource/CustomComponent'
 import Dialog from 'src/index.js'
 Vue.use(Dialog)
 export default {

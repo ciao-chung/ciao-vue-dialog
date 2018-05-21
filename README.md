@@ -201,7 +201,7 @@ this.$dialog({
 
 > Vue Component
 
-You can inject a custom vue component into dialog
+You can inject a custom vue component into dialog by this property
 
 ```javascript
 import CustomComponent from 'path/to/custom/component'
