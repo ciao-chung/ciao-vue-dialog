@@ -2,7 +2,9 @@
   <div data-role="demo">
     <h1>Ciao Vue Dialog</h1>
 
-    <button @click="triggerDialog">triggerDialog</button>
+    <button @click="base">base</button>
+
+    <button @click="withoutAnyButton">withoutAnyButton</button>
     <VueDialog/>
   </div>
 </template>
@@ -16,18 +18,21 @@ export default {
     return {
     }
   },
-  mounted() {
-    this.$nextTick(this.triggerDialog)
-  },
-  updated() {
-    this.triggerDialog()
-  },
   methods: {
-    triggerDialog() {
+    base() {
+      this.$dialog('base')
+    },
+    withoutAnyButton() {
       this.$dialog({
         title: 'foo',
         content: 'bar...',
         size: 'lg',
+        accept: {
+          hide: true,
+        },
+        dismiss: {
+          hide: true,
+        },
       })
     },
   },

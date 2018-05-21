@@ -41,11 +41,7 @@ export default {
     },
     setAccept(config) {
       if(!config) {
-        this.config.accept = {
-          label: 'Accept',
-          style: 'primary',
-          callback: null,
-        }
+        this.config.accept = null
         return
       }
 
@@ -53,16 +49,11 @@ export default {
         label: config.label || 'Accept',
         style: config.style || 'primary',
         callback: config.callback || null,
-        hide: config.hide == undefined ? false : true,
       }
     },
     setDismiss(config) {
       if(!config) {
-        this.config.dismiss = {
-          label: 'Dismiss',
-          style: 'default',
-          callback: null,
-        }
+        this.config.dismiss = null
         return
       }
 
@@ -70,7 +61,6 @@ export default {
         label: config.label || 'Dismiss',
         style: config.style || 'default',
         callback: config.callback || null,
-        hide: config.hide == undefined ? false : true,
       }
     },
     setConfigAsDefault() {

@@ -4,20 +4,23 @@
       &times;
     </div>
 
+    <!--title-->
     <div ciao-vue-dialog="title">
       {{config.title}}
     </div>
 
-    <div ciao-vue-dialog="body">
+    <!--body-->
+    <div ciao-vue-dialog="body" v-if="hasBody">
       <div v-if="config.content">{{config.content}}</div>
     </div>
 
-    <div ciao-vue-dialog="footer" v-if="showFooter">
-      <button class="btn" :class="'btn-'+config.accept.style">
+    <!--footer-->
+    <div ciao-vue-dialog="footer" v-if="hasFooter">
+      <button class="btn" :class="'btn-'+config.accept.style" v-if="config.accept">
         {{config.accept.label}}
       </button>
 
-      <button class="btn" :class="'btn-'+config.dismiss.style">
+      <button class="btn" :class="'btn-'+config.dismiss.style" v-if="config.dismiss">
         {{config.dismiss.label}}
       </button>
     </div>
@@ -53,9 +56,14 @@ export default {
         bounceIn: this.active,
       }
     },
-    showFooter() {
-      if(!this.config.accept.hide) return true
-      if(!this.config.dismiss.hide) return true
+    hasBody() {
+      if(this.config.content) return true
+      if(this.config.component) return true
+      return false
+    },
+    hasFooter() {
+      if(this.config.accept) return true
+      if(this.config.dismiss) return true
       return false
     },
   },
@@ -97,9 +105,9 @@ div[ciao-vue-dialog="dialog"]
     padding: 10px 0
     font-weight: bolder
     font-size: 26px
-    border-bottom: 1px $border-color solid
 
   div[ciao-vue-dialog="body"]
+    border-top: 1px $border-color solid
     padding: 20px 0
 
   div[ciao-vue-dialog="footer"]
