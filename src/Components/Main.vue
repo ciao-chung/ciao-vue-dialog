@@ -3,6 +3,7 @@
     <div ciao-vue-dialog="overlay" :active="active" @click="close"></div>
 
     <Dialog
+      @close="close"
       :active="active"
       :config="config" />
   </div>
@@ -31,8 +32,46 @@ export default {
       }
 
       this.config.title = options.title
-      if(options.content) this.config.content = options.content
+      this.config.content = options.content || null
       this.config.size = options.size || 'md'
+      this.config.component = options.component || null
+
+      this.setAccept(options.accept)
+      this.setDismiss(options.dismiss)
+    },
+    setAccept(config) {
+      if(!config) {
+        this.config.accept = {
+          label: 'Accept',
+          style: 'primary',
+          callback: null,
+        }
+        return
+      }
+
+      this.config.accept = {
+        label: config.label || 'Accept',
+        style: config.style || 'primary',
+        callback: config.callback || null,
+        hide: config.hide == undefined ? false : true,
+      }
+    },
+    setDismiss(config) {
+      if(!config) {
+        this.config.dismiss = {
+          label: 'Dismiss',
+          style: 'default',
+          callback: null,
+        }
+        return
+      }
+
+      this.config.dismiss = {
+        label: config.label || 'Dismiss',
+        style: config.style || 'default',
+        callback: config.callback || null,
+        hide: config.hide == undefined ? false : true,
+      }
     },
     setConfigAsDefault() {
       this.config = {

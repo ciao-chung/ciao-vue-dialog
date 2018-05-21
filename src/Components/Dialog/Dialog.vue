@@ -1,8 +1,25 @@
 <template>
   <div ciao-vue-dialog="dialog" :class="dialogClass" v-if="active" :size="config.size">
+    <div ciao-vue-dialog="close-button" @click="close">
+      &times;
+    </div>
 
     <div ciao-vue-dialog="title">
       {{config.title}}
+    </div>
+
+    <div ciao-vue-dialog="body">
+      <div v-if="config.content">{{config.content}}</div>
+    </div>
+
+    <div ciao-vue-dialog="footer" v-if="showFooter">
+      <button class="btn" :class="'btn-'+config.accept.style">
+        {{config.accept.label}}
+      </button>
+
+      <button class="btn" :class="'btn-'+config.dismiss.style">
+        {{config.dismiss.label}}
+      </button>
     </div>
   </div>
 </template>
@@ -25,7 +42,9 @@ export default {
   created() {
   },
   methods: {
-
+    close() {
+      this.$emit('close')
+    },
   },
   computed: {
     dialogClass() {
@@ -33,6 +52,11 @@ export default {
         animated: this.active,
         bounceIn: this.active,
       }
+    },
+    showFooter() {
+      if(!this.config.accept.hide) return true
+      if(!this.config.dismiss.hide) return true
+      return false
     },
   },
   components: {},
@@ -62,6 +86,13 @@ div[ciao-vue-dialog="dialog"]
       width: $size
       max-width: 80vw
 
+  div[ciao-vue-dialog="close-button"]
+    position: absolute
+    top: 0
+    right: 0
+    font-size: 20px
+    padding: 10px
+    cursor: pointer
   div[ciao-vue-dialog="title"]
     padding: 10px 0
     font-weight: bolder
@@ -69,4 +100,13 @@ div[ciao-vue-dialog="dialog"]
     border-bottom: 1px $border-color solid
 
   div[ciao-vue-dialog="body"]
+    padding: 20px 0
+
+  div[ciao-vue-dialog="footer"]
+    padding-top: 20px
+    border-top: 1px $border-color solid
+    display: flex
+    justify-content: flex-end
+    &>*
+      margin-right: 10px
 </style>

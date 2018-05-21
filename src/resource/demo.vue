@@ -25,7 +25,8 @@ export default {
   methods: {
     triggerDialog() {
       this.$dialog({
-        title: 'foobar',
+        title: 'foo',
+        content: 'bar...',
         size: 'lg',
       })
     },
