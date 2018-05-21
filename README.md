@@ -138,7 +138,7 @@ When you wanna use dialog as confirm's dismiss action
 
 You can do anything when user dismiss confirm by config **callback** property
 
-If you don't want to anything, you can skip this property 
+If you don't want to do anything after dismiss, you can skip this property 
 
 ```javascript
 export default {
