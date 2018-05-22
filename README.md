@@ -57,7 +57,11 @@ export default {
   },
 }
 </script>
+```
 
+**remember import style file in App.vue**
+
+```html
 <style src="ciao-vue-dialog/dist/ciao-vue-dialog.css"></style>
 ```
 
