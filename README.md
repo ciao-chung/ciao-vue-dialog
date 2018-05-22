@@ -219,7 +219,7 @@ this.$dialog({
 })
 ```
 
-### accept.commitOnEsc
+### dismiss.commitOnEsc
 
 If this property set as true
 
