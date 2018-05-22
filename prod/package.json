@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/ciao-chung/ciao-vue-dialog/issues"
   },
-  "homepage": "https://github.com/ciao-chung/ciao-vue-dialog#readme"
+  "homepage": "https://github.com/ciao-chung/ciao-vue-dialog#readme",
+  "dependencies": {
+    "animate.css": "^3.6.1",
+    "vue": "^2.5.16"
+  }
 }
