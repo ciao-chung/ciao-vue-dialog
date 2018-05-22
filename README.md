@@ -345,7 +345,7 @@ export default {
 
 ### Pass more data when inject custom component
 
-Sometimes you may want pass more data like user profile into custom component
+Sometimes you may want pass more data (like user profile) into custom component
 
 You can use **meta** property like this when you active **$dialog**
 
