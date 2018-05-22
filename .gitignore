@@ -16,4 +16,9 @@ selenium-debug.log
 *.njsproj
 *.sln
 
-prod/dist/
+prod/*
+!prod/.npmingore
+!prod/.package.json
+!prod/.yarn.lock
+
+

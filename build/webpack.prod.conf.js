@@ -46,6 +46,9 @@ const webpackConfig = merge(baseWebpackConfig, {
       onBuildStart: [
         'rm -rf prod/dist/',
       ],
+      onBuildEnd: [
+        'cp README.md prod/'
+      ],
     }),
   ]
 })

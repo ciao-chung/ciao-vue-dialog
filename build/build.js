@@ -1,6 +1,5 @@
 'use strict'
 require('./check-versions')()
-require('shelljs/global')
 process.env.NODE_ENV = 'production'
 
 const ora = require('ora')
@@ -18,7 +17,6 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
   if (err) throw err
   webpack(webpackConfig, function (err, stats) {
     spinner.stop()
-    cp('-R', 'README.md', path.resolve(__dirname, '../prod/dist'))
     if (err) throw err
     process.stdout.write(stats.toString({
       colors: true,
