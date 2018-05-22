@@ -1,6 +1,5 @@
-**main**
-
 ```javascript
+// main
 import FormCustomComponent from 'Form.vue'
 export default {
   methods: {
@@ -22,8 +21,8 @@ export default {
 }
 ```
 
-**Form.vue**
 ```html
+<!--Form.vue-->
 <template>
   <div>
     <h5>Enter your email, we will send you product menu</h5>

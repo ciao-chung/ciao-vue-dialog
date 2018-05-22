@@ -1,52 +1,100 @@
 <template>
   <div data-role="demo">
-    <h1>Ciao Vue Dialog</h1>
-
+    <!--Base-->
     <div class="block">
+      <h2>Base</h2>
       <button class="btn btn-info btn-sm" @click="base">Base</button>
 
-      <div class="markdown-container">
-        <BaseExample/>
+      <div class="row">
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="markdown-container">
+            <BaseExample/>
+          </div>
+        </div>
       </div>
     </div>
 
+    <!--Style-->
     <div class="block">
-      <button class="btn btn-info btn-sm" @click="large">Large</button>
+      <h2>Style</h2>
 
-      <div class="markdown-container">
-        <LargeExample/>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <button class="btn btn-success btn-sm" @click="style('success')">success</button>
+          <button class="btn btn-primary btn-sm" @click="style('primary')">primary</button>
+          <button class="btn btn-info btn-sm" @click="style('info')">info</button>
+          <button class="btn btn-warning btn-sm" @click="style('warning')">warning</button>
+          <button class="btn btn-danger btn-sm" @click="style('danger')">danger</button>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="markdown-container">
+            <StyleExample/>
+          </div>
+        </div>
+      </div>
+      <div>
+
       </div>
     </div>
 
+    <!--Size-->
     <div class="block">
-      <button class="btn btn-info btn-sm" @click="small">Small</button>
+      <h2>Size</h2>
 
-      <div class="markdown-container">
-        <SmallExample/>
+      <div class="row">
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <button class="btn btn-info btn-sm" @click="large">Large</button>
+
+          <div class="markdown-container">
+            <LargeExample/>
+          </div>
+        </div>
+
+
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <button class="btn btn-info btn-sm" @click="small">Small</button>
+
+          <div class="markdown-container">
+            <SmallExample/>
+          </div>
+        </div>
       </div>
     </div>
 
+    <!--Accept/Dismiss-->
     <div class="block">
+      <h2>Accept/Dismiss</h2>
       <button class="btn btn-info btn-sm" @click="acceptDismiss">Accept/Dismiss</button>
 
-      <div class="markdown-container">
-        <AcceptDismissExample/>
+      <div class="row">
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="markdown-container">
+            <AcceptDismissExample/>
+          </div>
+        </div>
       </div>
     </div>
 
+    <!--Custom Component-->
     <div class="block">
-      <button class="btn btn-info btn-sm" @click="normalCustomComponent">Custom Component(Normal)</button>
+      <h2>Custom Component</h2>
+      <div class="row">
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <button class="btn btn-info btn-sm" @click="normalCustomComponent">Normal</button>
 
-      <div class="markdown-container">
-        <NormalCustomComponentExample/>
-      </div>
-    </div>
+          <div class="markdown-container">
+            <NormalCustomComponentExample/>
+          </div>
+        </div>
 
-    <div class="block">
-      <button class="btn btn-info btn-sm" @click="formCustomComponent">Custom Component(Form)</button>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <button class="btn btn-info btn-sm" @click="formCustomComponent">Form</button>
 
-      <div class="markdown-container">
-        <FormCustomComponentComponentExample/>
+          <div class="markdown-container">
+            <FormCustomComponentComponentExample/>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -60,6 +108,7 @@ import PrismjsLoadLanguages from 'prismjs/components/index.js'
 import NormalCustomComponent from 'Resource/CustomComponent/Normal'
 import FormCustomComponent from 'Resource/CustomComponent/Form'
 import BaseExample from 'Resource/Example/Base.md'
+import StyleExample from 'Resource/Example/Style.md'
 import LargeExample from 'Resource/Example/Large.md'
 import SmallExample from 'Resource/Example/Small.md'
 import AcceptDismissExample from 'Resource/Example/AcceptDismiss.md'
@@ -93,6 +142,12 @@ export default {
       this.$dialog({
         title: 'Small Size',
         size: 'sm',
+      })
+    },
+    style(style) {
+      this.$dialog({
+        title: style,
+        style,
       })
     },
     acceptDismiss() {
@@ -134,6 +189,7 @@ export default {
   },
   components: {
     BaseExample,
+    StyleExample,
     LargeExample,
     SmallExample,
     AcceptDismissExample,
@@ -148,7 +204,8 @@ export default {
 <style lang="sass" type="sass/text" scoped>
 div[data-role="demo"]
   .block
-    margin: 20px
+    padding: 20px
+    margin-bottom: 50px
   .markdown-container
     padding: 20px 0
 </style>

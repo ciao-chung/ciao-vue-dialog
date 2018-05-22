@@ -52,6 +52,7 @@ export default {
       }
 
       this.config.title = options.title
+      this.config.style = options.style || null
       this.config.content = options.content || null
       this.config.size = options.size || 'md'
       this.config.component = options.component || null

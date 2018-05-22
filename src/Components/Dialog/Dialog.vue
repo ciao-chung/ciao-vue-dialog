@@ -5,7 +5,7 @@
     </div>
 
     <!--title-->
-    <div ciao-vue-dialog="title">
+    <div ciao-vue-dialog="title" :class="config.style">
       {{config.title}}
     </div>
 
@@ -139,6 +139,17 @@ div[ciao-vue-dialog="dialog"]
     padding: 10px 0
     font-weight: bolder
     font-size: 26px
+    color: #565656
+    &.success
+      color: #4cae4c
+    &.primary
+      color: #2e6da4
+    &.info
+      color: #5bc0de
+    &.warning
+      color: #f0ad4e
+    &.danger
+      color: #d9534f
 
   div[ciao-vue-dialog="body"]
     border-top: 1px $border-color solid

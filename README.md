@@ -65,6 +65,21 @@ export default {
 <style src="ciao-vue-dialog/dist/ciao-vue-dialog.css"></style>
 ```
 
+## style
+
+> String
+
+You can setup style by **style** property
+
+There has four bootstrap style(success, primary, info, warning, danger)
+
+```javascript
+this.$dialog({
+  title: 'foo',
+  style: 'warning'
+})
+```
+
 ## content
 
 > String
