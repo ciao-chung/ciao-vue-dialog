@@ -1,6 +1,6 @@
 {
   "name": "ciao-vue-dialog",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A vue dialog plugin",
   "main": "dist/ciao-vue-dialog.js",
   "scripts": {
