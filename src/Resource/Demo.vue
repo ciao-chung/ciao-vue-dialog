@@ -10,7 +10,9 @@
 
     <button @click="acceptDismiss">Accept/Dismiss</button>
 
-    <button @click="customComponent">Custom Component</button>
+    <button @click="normalcustomComponent">Custom Component(Normal)</button>
+
+    <button @click="formCustomComponent">Custom Component(Form)</button>
 
     <VueDialog/>
   </div>
@@ -18,7 +20,8 @@
 
 <script>
 import Vue from 'vue'
-import CustomComponent from 'Resource/CustomComponent'
+import NormalCustomComponent from 'Resource/CustomComponent/Normal'
+import FormCustomComponent from 'Resource/CustomComponent/Form'
 import Dialog from 'src/index.js'
 Vue.use(Dialog)
 export default {
@@ -46,22 +49,36 @@ export default {
       this.$dialog({
         title: 'Accept/Dismiss',
         accept: {
-          callback: () => {
+          callback() {
             alert('after accept')
           },
         },
         dismiss: {
-          callback: () => {
+          callback() {
             alert('after dismiss')
           },
         },
       })
     },
-    customComponent() {
+    normalcustomComponent() {
       this.$dialog({
         title: 'Custom Component',
         size: 'lg',
-        component: CustomComponent,
+        component: NormalCustomComponent,
+      })
+    },
+    formCustomComponent() {
+      this.$dialog({
+        title: 'Send Product Menu',
+        size: 'lg',
+        component: FormCustomComponent,
+        accept: {
+          label: 'Send',
+          callback(data) {
+            if(!data) return
+            alert(`We had sent email to ${data}`)
+          }
+        },
       })
     },
   },

@@ -4,7 +4,10 @@
 
     <Dialog
       ref="dialog"
+      @updateData="updateData"
       @close="close"
+      :meta="meta"
+      :data="data"
       :active="active"
       :config="config" />
   </div>
@@ -18,6 +21,8 @@ export default {
     return {
       active: false,
       config: {},
+      meta: null,
+      data: null,
     }
   },
   created() {
@@ -26,6 +31,8 @@ export default {
   methods: {
     init(options) {
       this.setConfigAsDefault()
+      this.meta = options.meta || null
+      this.data = options.data || null
 
       if(typeof options == 'string') {
         this.config.title = options
@@ -83,12 +90,15 @@ export default {
     },
     setupKeyEvent(event) {
       if(this.config.accept) {
-        if(this.config.accept.commitOnEnter ||event.which == 13) this.$refs.dialog.onAccept()
+        if(this.config.accept.commitOnEnter && event.which == 13) this.$refs.dialog.onAccept()
       }
 
       if(this.config.dismiss) {
-        if(this.config.dismiss.commitOnEsc || event.which == 27) this.$refs.dialog.onDismiss()
+        if(this.config.dismiss.commitOnEsc && event.which == 27) this.$refs.dialog.onDismiss()
       }
+    },
+    updateData(data) {
+      this.data = data
     },
   },
   computed: {

@@ -15,6 +15,11 @@
 
       <component
         v-if="config.component"
+        @commitAccept="onAccept"
+        @commitDismiss="onDismiss"
+        @updateData="updateData"
+        :meta="meta"
+        :data="data"
         :is="config.component" />
     </div>
 
@@ -51,22 +56,31 @@ export default {
         return {}
       },
     },
+    meta: {
+      default: null,
+    },
+    data: {
+      default: null,
+    },
   },
   methods: {
     onAccept() {
       this.close()
       if(!this.config.accept) return
       if(!(this.config.accept.callback instanceof Function)) return
-      this.config.accept.callback()
+      this.config.accept.callback(this.data)
     },
     onDismiss() {
       this.close()
       if(!this.config.dismiss) return
       if(!(this.config.dismiss.callback instanceof Function)) return
-      this.config.dismiss.callback()
+      this.config.dismiss.callback(this.data)
     },
     close() {
       this.$emit('close')
+    },
+    updateData(data) {
+      this.$emit('updateData', data)
     },
   },
   computed: {
