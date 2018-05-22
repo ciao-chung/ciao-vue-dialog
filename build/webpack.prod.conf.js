@@ -7,6 +7,7 @@ const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+const WebpackShellPlugin = require('webpack-shell-plugin')
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
   : require('../config/prod.env')
@@ -23,17 +24,16 @@ const webpackConfig = merge(baseWebpackConfig, {
   entry: './src/index.js',
   output: {
     path: config.build.assetsRoot,
-    filename: 'dist/dist.js',
+    filename: 'dist/ciao-vue-dialog.js',
     library: 'CiaoVueDialog',
     libraryTarget: 'umd'
   },
-  externals: /^(jquery|uuid)/i,
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
       compress: { warnings: false }
     }),
     new ExtractTextPlugin({
-      filename: 'dist/dist.css'
+      filename: 'dist/ciao-vue-dialog.css',
     }),
     new OptimizeCSSPlugin(),
 
@@ -42,6 +42,11 @@ const webpackConfig = merge(baseWebpackConfig, {
     }),
     new webpack.HashedModuleIdsPlugin(),
     new webpack.optimize.ModuleConcatenationPlugin(),
+    new WebpackShellPlugin({
+      onBuildStart: [
+        'rm -rf prod/dist/',
+      ],
+    }),
   ]
 })
 

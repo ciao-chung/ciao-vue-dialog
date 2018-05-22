@@ -2,18 +2,30 @@
   <div data-role="demo">
     <h1>Ciao Vue Dialog</h1>
 
-    <button @click="base">Base</button>
+    <div class="block">
+      <button class="btn btn-light btn-sm" @click="base">Base</button>
+    </div>
 
-    <button @click="large">Large</button>
+    <div class="block">
+      <button class="btn btn-light btn-sm" @click="large">Large</button>
+    </div>
 
-    <button @click="small">Small</button>
+    <div class="block">
+      <button class="btn btn-light btn-sm" @click="small">Small</button>
+    </div>
 
-    <button @click="acceptDismiss">Accept/Dismiss</button>
+    <div class="block">
+      <button class="btn btn-light btn-sm" @click="acceptDismiss">Accept/Dismiss</button>
+    </div>
 
-    <button @click="normalcustomComponent">Custom Component(Normal)</button>
+    <div class="block">
+      <button class="btn btn-light btn-sm" @click="normalcustomComponent">Custom Component(Normal)</button>
+    </div>
 
-    <button @click="formCustomComponent">Custom Component(Form)</button>
-
+    <div class="block">
+      <button class="btn btn-light btn-sm" @click="formCustomComponent">Custom Component(Form)</button>
+    </div>
+    
     <VueDialog/>
   </div>
 </template>
@@ -88,4 +100,6 @@ export default {
 <style src="bootstrap/dist/css/bootstrap.min.css"></style>
 <style lang="sass" type="sass/text" scoped>
 div[data-role="demo"]
+  .block
+    margin: 20px
 </style>

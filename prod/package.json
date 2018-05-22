@@ -1,0 +1,23 @@
+{
+  "name": "ciao-vue-dialog",
+  "version": "1.0.0",
+  "description": "A vue dialog plugin",
+  "main": "dist/ciao-vue-dialog.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ciao-chung/ciao-vue-dialog.git"
+  },
+  "keywords": [
+    "vue",
+    "dialog"
+  ],
+  "author": "Ciao <ciao0958@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ciao-chung/ciao-vue-dialog/issues"
+  },
+  "homepage": "https://github.com/ciao-chung/ciao-vue-dialog#readme"
+}
