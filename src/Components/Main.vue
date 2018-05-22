@@ -17,6 +17,11 @@
 import { events } from 'Components/events'
 import Dialog from 'Components/Dialog/Dialog.vue'
 export default {
+  props: {
+    zIndex: {
+      default: 1000,
+    },
+  },
   data() {
     return {
       active: false,
@@ -28,8 +33,15 @@ export default {
   created() {
     events.$on('dialog', this.onActive)
   },
+  mounted() {
+    this.init()
+  },
   methods: {
-    init(options) {
+    init() {
+      const wrap = document.querySelectorAll('div[ciao-vue-dialog="dialog-wrap"]')[0]
+      wrap.style.zIndex = this.zIndex
+    },
+    initOptions(options) {
       this.setConfigAsDefault()
       this.meta = options.meta || null
       this.data = options.data || null
@@ -80,7 +92,7 @@ export default {
       }
     },
     onActive(options) {
-      this.init(options)
+      this.initOptions(options)
       this.active = true
       window.addEventListener('keydown', this.setupKeyEvent)
     },

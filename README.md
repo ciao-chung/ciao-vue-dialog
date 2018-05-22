@@ -91,6 +91,18 @@ this.$dialog({
 })
 ```
 
+## z-index
+
+You can setup z-index by **zIndex** property of component
+
+Default value is 1000
+
+**App.vue**
+
+```html
+<VueDialog :zIndex="6000"/>
+```
+
 ## accept
 
 > Object
