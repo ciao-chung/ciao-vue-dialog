@@ -2,6 +2,15 @@
 
 > Vue Dialog Component
 
+[Demo](https://ciao-chung.github.io/ciao-vue-dialog/)
+
+## Feature
+
+* Basic title, content in dialog
+* Three size(large, middle, small)
+* Can catch and handle accept/dismiss action like JavasScript confirm
+* Inject custom vue component into dialog
+
 ## Dependencies
 
 * animate.css
