@@ -1,0 +1,3 @@
+```javascript
+this.$dialog('base')
+```

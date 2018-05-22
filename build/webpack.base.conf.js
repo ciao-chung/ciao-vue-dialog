@@ -74,6 +74,10 @@ module.exports = {
         loader: 'sass?indentedSyntax',
         exclude: /node_modules/
       },
+      {
+        test: /\.md$/,
+        loader: 'vue-markdown-loader'
+      },
     ],
   },
 }

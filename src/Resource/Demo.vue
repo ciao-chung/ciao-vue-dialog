@@ -3,45 +3,83 @@
     <h1>Ciao Vue Dialog</h1>
 
     <div class="block">
-      <button class="btn btn-light btn-sm" @click="base">Base</button>
+      <button class="btn btn-info btn-sm" @click="base">Base</button>
+
+      <div class="markdown-container">
+        <BaseExample/>
+      </div>
     </div>
 
     <div class="block">
-      <button class="btn btn-light btn-sm" @click="large">Large</button>
+      <button class="btn btn-info btn-sm" @click="large">Large</button>
+
+      <div class="markdown-container">
+        <LargeExample/>
+      </div>
     </div>
 
     <div class="block">
-      <button class="btn btn-light btn-sm" @click="small">Small</button>
+      <button class="btn btn-info btn-sm" @click="small">Small</button>
+
+      <div class="markdown-container">
+        <SmallExample/>
+      </div>
     </div>
 
     <div class="block">
-      <button class="btn btn-light btn-sm" @click="acceptDismiss">Accept/Dismiss</button>
+      <button class="btn btn-info btn-sm" @click="acceptDismiss">Accept/Dismiss</button>
+
+      <div class="markdown-container">
+        <AcceptDismissExample/>
+      </div>
     </div>
 
     <div class="block">
-      <button class="btn btn-light btn-sm" @click="normalcustomComponent">Custom Component(Normal)</button>
+      <button class="btn btn-info btn-sm" @click="normalCustomComponent">Custom Component(Normal)</button>
+
+      <div class="markdown-container">
+        <NormalCustomComponentExample/>
+      </div>
     </div>
 
     <div class="block">
-      <button class="btn btn-light btn-sm" @click="formCustomComponent">Custom Component(Form)</button>
+      <button class="btn btn-info btn-sm" @click="formCustomComponent">Custom Component(Form)</button>
+
+      <div class="markdown-container">
+        <FormCustomComponentComponentExample/>
+      </div>
     </div>
-    
+
     <VueDialog/>
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
+import Prismjs from 'prismjs'
+import PrismjsLoadLanguages from 'prismjs/components/index.js'
 import NormalCustomComponent from 'Resource/CustomComponent/Normal'
 import FormCustomComponent from 'Resource/CustomComponent/Form'
+import BaseExample from 'Resource/Example/Base.md'
+import LargeExample from 'Resource/Example/Large.md'
+import SmallExample from 'Resource/Example/Small.md'
+import AcceptDismissExample from 'Resource/Example/AcceptDismiss.md'
+import NormalCustomComponentExample from 'Resource/Example/NormalCustomComponent.md'
+import FormCustomComponentComponentExample from 'Resource/Example/FormCustomComponent.md'
+
+import Vue from 'vue'
 import Dialog from 'src/index.js'
 Vue.use(Dialog)
 export default {
-  data() {
-    return {
-    }
+  mounted() {
+    this.highlightSnippet()
   },
   methods: {
+    highlightSnippet() {
+      this.$nextTick(() => {
+        PrismjsLoadLanguages(['javascript', 'php', 'sass', 'scss', 'bash'])
+        Prismjs.highlightAll()
+      })
+    },
     base() {
       this.$dialog('base')
     },
@@ -72,7 +110,7 @@ export default {
         },
       })
     },
-    normalcustomComponent() {
+    normalCustomComponent() {
       this.$dialog({
         title: 'Custom Component',
         size: 'lg',
@@ -94,12 +132,23 @@ export default {
       })
     },
   },
+  components: {
+    BaseExample,
+    LargeExample,
+    SmallExample,
+    AcceptDismissExample,
+    NormalCustomComponentExample,
+    FormCustomComponentComponentExample,
+  },
 }
 </script>
 
 <style src="bootstrap/dist/css/bootstrap.min.css"></style>
+<style src="prismjs/themes/prism.css"></style>
 <style lang="sass" type="sass/text" scoped>
 div[data-role="demo"]
   .block
     margin: 20px
+  .markdown-container
+    padding: 20px 0
 </style>
