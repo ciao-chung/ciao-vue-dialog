@@ -16,5 +16,3 @@ selenium-debug.log
 *.njsproj
 *.sln
 
-docs/*
-!docs/.gitkeep
