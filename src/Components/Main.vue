@@ -2,7 +2,7 @@
   <div ciao-vue-dialog="dialog-wrap" :active="active">
     <div ciao-vue-dialog="overlay" :active="active" @click="close"></div>
 
-    <Dialog
+    <ComponentDialog
       ref="dialog"
       @updateData="updateData"
       @close="close"
@@ -15,7 +15,7 @@
 
 <script>
 import { events } from 'Components/events'
-import Dialog from 'Components/Dialog/Dialog.vue'
+import ComponentDialog from 'Components/Dialog/Dialog.vue'
 export default {
   props: {
     zIndex: {
@@ -123,7 +123,7 @@ export default {
     },
   },
   components: {
-    Dialog,
+    ComponentDialog,
   },
 }
 </script>

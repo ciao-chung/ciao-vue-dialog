@@ -22,7 +22,7 @@
 
     <!--Custom Component-->
     <div class="block">
-      <CustomeComponentExample/>
+      <CustomComponentExample/>
     </div>
 
     <VueDialog/>
@@ -36,7 +36,7 @@ import BaseExample from 'Resource/Example/Base/Base.vue'
 import SizeExample from 'Resource/Example/Size/Size.vue'
 import ActionExample from 'Resource/Example/Action/Action.vue'
 import StyleExample from 'Resource/Example/Style/Style.vue'
-import CustomeComponentExample from 'Resource/Example/CustomeComponent/CustomeComponent.vue'
+import CustomComponentExample from 'Resource/Example/CustomeComponent/CustomeComponent.vue'
 
 import Vue from 'vue'
 import Dialog from 'src/index.js'
@@ -61,7 +61,7 @@ export default {
     StyleExample,
     SizeExample,
     ActionExample,
-    CustomeComponentExample,
+    CustomComponentExample,
   },
 }
 </script>
