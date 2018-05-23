@@ -3,8 +3,8 @@
     <h2>Size</h2>
 
     <div class="col-sm-6 col-md-4 col-lg-3">
-      <button class="btn btn-info btn-sm" @click="dialog('large')">Large</button>
-      <button class="btn btn-info btn-sm" @click="dialog('small')">Small</button>
+      <button class="btn btn-info btn-sm" @click="dialog('lg')">Large</button>
+      <button class="btn btn-info btn-sm" @click="dialog('sm')">Small</button>
 
       <div class="markdown-container">
         <Snippet/>

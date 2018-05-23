@@ -63,7 +63,31 @@ export default {
       default: null,
     },
   },
+  data() {
+    return {
+      size: {
+        lg: 800,
+        md: 500,
+        sm: 300,
+      },
+    }
+  },
+  created() {
+    $(window).resize(() => this.setupMobileWidth())
+  },
   methods: {
+    setupMobileWidth() {
+      if(!this.active) return
+      const browserWidth = $(window).width()
+      const dialogExpectsWidth = this.size[this.config.size]
+      const isMobileMode = browserWidth*0.8 <= dialogExpectsWidth
+      const dialogWidth = !isMobileMode ? dialogExpectsWidth : browserWidth*0.8
+      $(this.$el)
+        .width(dialogWidth)
+        .css({
+          left: browserWidth*0.5 - dialogWidth/2
+        })
+    },
     onAccept() {
       this.close()
       if(!this.config.accept) return
@@ -101,7 +125,12 @@ export default {
       return false
     },
   },
-  components: {},
+  watch: {
+    active() {
+      if(!this.active) return
+      this.$nextTick(this.setupMobileWidth)
+    },
+  },
 }
 </script>
 

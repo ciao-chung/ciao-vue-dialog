@@ -49,6 +49,7 @@ export default {
 
       if(typeof options == 'string') {
         this.config.title = options
+        this.config.size = 'md'
         return
       }
 

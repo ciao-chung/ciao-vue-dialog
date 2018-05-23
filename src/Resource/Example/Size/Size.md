@@ -6,6 +6,6 @@ this.$dialog({
 
 this.$dialog({
   title: 'Small Size',
-  size: 'small',
+  size: 'sm',
 })
 ```
