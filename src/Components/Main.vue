@@ -38,8 +38,9 @@ export default {
   },
   methods: {
     init() {
-      const wrap = document.querySelectorAll('div[ciao-vue-dialog="dialog-wrap"]')[0]
-      wrap.style.zIndex = this.zIndex
+      $('div[ciao-vue-dialog="dialog-wrap"]').css({
+        'z-index': this.zIndex
+      })
     },
     initOptions(options) {
       this.setConfigAsDefault()

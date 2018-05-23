@@ -13,9 +13,14 @@
 
 ## Dependencies
 
-* animate.css
-* bootstrap 3/4 (just for footer button, your can custom it's class name for your bootstrap version)
-* vue 2.x
+* [jQuery](https://jquery.com)
+* [Animate.css](https://daneden.github.io/animate.css/)
+* [Bootstrap 3/4](https://getbootstrap.com) (just for footer button, your can custom it's class name for your bootstrap version)
+* [Vue.js](https://vuejs.org)
+
+## Required
+
+* Vue.js 2.x
 
 ## Installation
 
