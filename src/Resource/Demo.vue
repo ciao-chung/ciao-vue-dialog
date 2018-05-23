@@ -1,35 +1,36 @@
 <template>
   <div data-role="demo">
     <!--Base-->
-    <div class="block">
+    <div class="block" block="base">
       <BaseExample/>
     </div>
 
     <!--Style-->
-    <div class="block">
+    <div class="block" block="style">
       <StyleExample/>
     </div>
 
     <!--Size-->
-    <div class="block">
+    <div class="block" block="size">
       <SizeExample/>
     </div>
 
     <!--Accept/Dismiss-->
-    <div class="block">
+    <div class="block" block="action">
       <ActionExample/>
     </div>
 
     <!--Custom Component-->
-    <div class="block">
+    <div class="block" block="custom-component">
       <CustomComponentExample/>
     </div>
 
-    <VueDialog/>
+    <VueDialog :zIndex="3000"/>
   </div>
 </template>
 
 <script>
+import jump from 'jump.js'
 import Prismjs from 'prismjs'
 import PrismjsLoadLanguages from 'prismjs/components/index.js'
 import BaseExample from 'Resource/Example/Base/Base.vue'
@@ -40,10 +41,17 @@ import CustomComponentExample from 'Resource/Example/CustomeComponent/CustomeCom
 
 import Vue from 'vue'
 import Dialog from 'src/index.js'
+import 'bootstrap/dist/js/bootstrap.js'
 Vue.use(Dialog)
 export default {
+  data() {
+    return {
+      navHeight: 56,
+    }
+  },
   mounted() {
     this.highlightSnippet()
+    this.scrollToBlock()
   },
   updated() {
     this.highlightSnippet()
@@ -55,6 +63,16 @@ export default {
         Prismjs.highlightAll()
       })
     },
+    scrollToBlock() {
+      const block = this.$route.query.block
+      if(!block) return
+      const $block = $(`.block[block="${block}"]`)
+      jump('div#app', {
+        duration: 1000,
+        offset: $block.offset().top - this.navHeight,
+        a11y: false,
+      })
+    },
   },
   components: {
     BaseExample,
@@ -62,6 +80,11 @@ export default {
     SizeExample,
     ActionExample,
     CustomComponentExample,
+  },
+  watch: {
+    $route() {
+      this.scrollToBlock()
+    },
   },
 }
 </script>
