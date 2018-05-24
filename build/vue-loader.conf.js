@@ -21,13 +21,6 @@ module.exports = {
     image: 'xlink:href'
   },
   postcss: [
-    require('autoprefixer')({
-      browsers: [
-        "Android >= 2",
-        "Firefox >= 2",
-        "ios >= 6",
-        "ie >= 9"
-      ]
-    })
+    require('autoprefixer')()
   ]
 }

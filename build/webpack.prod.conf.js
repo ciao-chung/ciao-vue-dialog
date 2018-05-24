@@ -22,6 +22,7 @@ const webpackConfig = merge(baseWebpackConfig, {
   },
   devtool: config.build.productionSourceMap ? config.build.devtool : false,
   entry: './src/index.js',
+  externals: /^(jquery)/i,
   output: {
     path: config.build.assetsRoot,
     filename: 'dist/ciao-vue-dialog.js',
