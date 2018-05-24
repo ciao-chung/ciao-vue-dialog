@@ -96,6 +96,21 @@ this.$dialog({
 })
 ```
 
+## close
+
+> Number
+
+You can let dialog close automatically by configuring this property
+
+Just pass delay time(milliseconds)
+
+```javascript
+this.$dialog({
+  title: 'Auto Close',
+  close: 2000,
+})
+```
+
 ## size
 
 > String
