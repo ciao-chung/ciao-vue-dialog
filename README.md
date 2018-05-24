@@ -15,7 +15,7 @@
 
 * [jQuery](https://jquery.com)
 * [Animate.css](https://daneden.github.io/animate.css/)
-* [Bootstrap 3/4](https://getbootstrap.com) (just for footer button, your can custom it's class name for your bootstrap version)
+* [Bootstrap 3/4](https://getbootstrap.com) (just for footer button, your can custom it's class name for your Bootstrap version)
 * [Vue.js](https://vuejs.org)
 
 ## Required
@@ -76,7 +76,7 @@ export default {
 
 You can setup style by **style** property
 
-There has four bootstrap style(success, primary, info, warning, danger)
+There has four Bootstrap style(success, primary, info, warning, danger)
 
 ```javascript
 this.$dialog({
@@ -172,7 +172,7 @@ this.$dialog({
 
 ### accept.style
 
-Custom accept button style by using bootstrap class name
+Custom accept button style by using Bootstrap class name
 
 Default is 'primary'
 
@@ -248,9 +248,9 @@ this.$dialog({
 
 ### dismiss.style
 
-Custom dismiss button style by using bootstrap class name
+Custom dismiss button style by using Bootstrap class name
 
-Or if you want to use bootstrap 4 button's class name
+Or if you want to use Bootstrap 4 button's class name
 
 Default is 'light'
 
@@ -376,7 +376,7 @@ You can commit accept/dismiss action by using **$emit('commitAccept')**、**$emi
 
 You should use this two event be carefully
 
-Here is example which commit accept action, when press Enter key
+Here is example which commit accept action when user press Enter key
 
 ```html
 <template>
@@ -394,7 +394,7 @@ export default {
 
 Sometimes you may want pass more data (like user profile) into custom component
 
-You can use **meta** property like this when you active **$dialog**
+You can use **meta** property like this way when you active **$dialog**
 
 ```javascript
 this.$dialog({
