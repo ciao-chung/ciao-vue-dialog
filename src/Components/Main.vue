@@ -28,6 +28,7 @@ export default {
       config: {},
       meta: null,
       data: null,
+      closeTimeout: null,
     }
   },
   created() {
@@ -57,6 +58,7 @@ export default {
       this.config.style = options.style || null
       this.config.content = options.content || null
       this.config.size = options.size || 'md'
+      this.config.close = !isNaN(options.close) ? options.close : false
       this.config.component = options.component || null
 
       this.setAccept(options.accept)
@@ -97,7 +99,13 @@ export default {
     onActive(options) {
       this.initOptions(options)
       this.active = true
+      this.handleTimeout()
       window.addEventListener('keydown', this.setupKeyEvent)
+    },
+    handleTimeout() {
+      clearTimeout(this.closeTimeout)
+      if(!this.config.close) return
+      this.closeTimeout = setTimeout(this.close , this.config.close)
     },
     close() {
       this.active = false

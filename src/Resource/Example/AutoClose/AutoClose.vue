@@ -23,7 +23,7 @@ export default {
     dialog() {
       this.$dialog({
         title: 'Auto Close',
-        close: 2000,
+        close: 3000,
       })
     },
   },
