@@ -10,11 +10,23 @@
         </div>
       </div>
 
-      <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="col-sm-12 col-md-8 col-lg-9">
         <button class="btn btn-info btn-sm" @click="form">Form</button>
 
-        <div class="markdown-container">
-          <FormSnippet/>
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="markdown-container">
+              <strong>Main</strong>
+              <FormMainSnippet/>
+            </div>
+          </div>
+
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="markdown-container">
+              <strong>Form.vue</strong>
+              <FormComponentSnippet/>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -23,7 +35,8 @@
 
 <script>
 import NormalSnippet from './Normal.md'
-import FormSnippet from './Form.md'
+import FormMainSnippet from './FormMain.md'
+import FormComponentSnippet from './FormComponent.md'
 import NormalCustomComponent from 'Resource/CustomComponent/Normal'
 import FormCustomComponent from 'Resource/CustomComponent/Form'
 export default {
@@ -52,7 +65,8 @@ export default {
   },
   components: {
     NormalSnippet,
-    FormSnippet,
+    FormMainSnippet,
+    FormComponentSnippet,
     NormalCustomComponent,
     FormCustomComponent,
   },
