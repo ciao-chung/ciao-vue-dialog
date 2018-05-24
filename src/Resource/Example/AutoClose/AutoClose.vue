@@ -1,11 +1,12 @@
 <template>
   <div>
-    <h2>Size</h2>
+    <h2>Auto Close</h2>
 
     <div class="row">
       <div class="col-sm-6 col-md-4 col-lg-3">
-        <button class="btn btn-info btn-sm" @click="dialog('lg')">Large</button>
-        <button class="btn btn-info btn-sm" @click="dialog('sm')">Small</button>
+        <button class="btn btn-info btn-sm" @click="dialog('lg')">
+          Auto Close
+        </button>
 
         <div class="markdown-container">
           <Snippet/>
@@ -16,13 +17,13 @@
 </template>
 
 <script>
-import Snippet from './Size.md'
+import Snippet from './AutoClose.md'
 export default {
   methods: {
-    dialog(size) {
+    dialog() {
       this.$dialog({
-        title: 'Custom Size',
-        size,
+        title: 'Auto Close',
+        close: 2000,
       })
     },
   },

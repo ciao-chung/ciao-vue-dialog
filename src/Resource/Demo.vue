@@ -5,6 +5,11 @@
       <BaseExample/>
     </div>
 
+    <!--AutoClose-->
+    <div class="block" block="auto-close">
+      <AutoCloseExample/>
+    </div>
+
     <!--Style-->
     <div class="block" block="style">
       <StyleExample/>
@@ -34,6 +39,7 @@ import jump from 'jump.js'
 import Prismjs from 'prismjs'
 import PrismjsLoadLanguages from 'prismjs/components/index.js'
 import BaseExample from 'Resource/Example/Base/Base.vue'
+import AutoCloseExample from 'Resource/Example/AutoClose/AutoClose.vue'
 import SizeExample from 'Resource/Example/Size/Size.vue'
 import ActionExample from 'Resource/Example/Action/Action.vue'
 import StyleExample from 'Resource/Example/Style/Style.vue'
@@ -76,6 +82,7 @@ export default {
   },
   components: {
     BaseExample,
+    AutoCloseExample,
     StyleExample,
     SizeExample,
     ActionExample,

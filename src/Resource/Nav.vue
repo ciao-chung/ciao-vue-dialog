@@ -33,6 +33,7 @@ export default {
     return {
       blocks: [
         { label: 'Base', name: 'base' },
+        { label: 'Auto Close', name: 'auto-close' },
         { label: 'Style', name: 'style' },
         { label: 'Size', name: 'size' },
         { label: 'Action', name: 'action' },
