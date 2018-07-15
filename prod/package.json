@@ -1,6 +1,6 @@
 {
   "name": "ciao-vue-dialog",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A vue dialog plugin",
   "main": "dist/ciao-vue-dialog.js",
   "scripts": {
@@ -23,6 +23,7 @@
   "dependencies": {
     "animate.css": "^3.6.1",
     "jquery": "^3.3.1",
+    "jquery-mousewheel": "^3.1.13",
     "vue": "^2.5.16"
   }
 }
