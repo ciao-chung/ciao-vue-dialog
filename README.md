@@ -14,6 +14,7 @@
 ## Dependencies
 
 * [jQuery](https://jquery.com)
+* [jquery-mousewheel](https://github.com/jquery/jquery-mousewheel)
 * [Animate.css](https://daneden.github.io/animate.css/)
 * [Bootstrap 3/4](https://getbootstrap.com) (just for footer button, your can custom it's class name for your Bootstrap version)
 * [Vue.js](https://vuejs.org)

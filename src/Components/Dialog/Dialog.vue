@@ -44,6 +44,7 @@
 
 <script>
 import { events } from 'Components/events'
+import 'jquery-mousewheel'
 export default {
   props: {
     active: {
@@ -75,7 +76,33 @@ export default {
   created() {
     $(window).resize(() => this.setupMobileWidth())
   },
+  mounted() {
+    this.setupScroll()
+  },
   methods: {
+    setupScroll() {
+      const $dialog = $(this.$el)
+      if(!this.active) {
+        $dialog.unbind('mousewheel')
+        return
+      }
+      // const scrollHeight = $dialog.get(0).scrollHeight
+      $dialog.bind('mousewheel', function(event, direction) {
+        const height = $dialog.height()                     // dialog高度
+        const scrollHeight = $dialog.get(0).scrollHeight    // dialog內的實際高度(包含overflow)
+        const padding = 20*2
+
+        // 往上滑
+        if((this.scrollTop === (scrollHeight - height) && direction < 0) || (this.scrollTop === 0 && direction > 0)) {
+          event.preventDefault()
+        }
+
+        // 往下滑(後面3px是為了滑動時的小誤差)
+        else if ((this.scrollTop+height+padding >= scrollHeight-3) && direction < 0) {
+          event.preventDefault()
+        }
+      })
+    },
     setupMobileWidth() {
       if(!this.active) return
       const browserWidth = $(window).width()
@@ -128,7 +155,10 @@ export default {
   watch: {
     active() {
       if(!this.active) return
-      this.$nextTick(this.setupMobileWidth)
+      this.$nextTick(() => {
+        this.setupMobileWidth()
+        this.setupScroll()
+      })
     },
   },
 }
@@ -139,10 +169,13 @@ export default {
 $transition-time: 0.5s
 $border-color: #b3b3b3
 $size-list: ('lg': 800px, 'md': 500px, 'sm': 300px)
+$top: 60px
 @mixin setPosition($width)
   position: absolute
-  top: 100px
+  top: $top
   left: calc(50vw - #{$width}/2)
+  max-height: calc(90vh - #{$top})
+  overflow: auto
 div[ciao-vue-dialog="dialog"]
   @include setPosition(map-get($size-list, 'md'))
   width: map-get($size-list, 'md')
