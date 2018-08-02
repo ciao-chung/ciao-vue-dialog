@@ -97,6 +97,7 @@ export default {
       }
     },
     onActive(options) {
+      $('*:focus').blur()
       this.initOptions(options)
       this.active = true
       this.handleTimeout()
