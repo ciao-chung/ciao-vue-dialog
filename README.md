@@ -157,7 +157,7 @@ export default {
         title: 'Delete',
         content: 'Do you really want to delete',
         accept: {
-          callback: @onAccept,
+          callback: this.onAccept,
         },
       })
     },
@@ -233,7 +233,7 @@ export default {
         title: 'Delete',
         content: 'Do you really want to delete',
         dismiss: {
-          callback: @onDismiss,
+          callback: this.onDismiss,
         },
       })
     },
@@ -327,10 +327,10 @@ export default {
         title: 'Send Product Menu',
         component: FormCustomComponent,
         accept: {
-          callback: @onAccept
+          callback: this.onAccept
         },
         dismiss: {
-          callback: @onDismiss
+          callback: this.onDismiss
         },
       })
     },
@@ -438,6 +438,31 @@ export default {
   },
   created() {
     alert(`Hi ${meta.name}`)
+  },
+}
+```
+
+### Loading
+
+If your accept/dismiss callback is async, it will trigger loading before async process is finished.
+
+Also, if you has some async process in custom component, you can use **setLoader** method to set loading status.
+
+```javascript
+export default {
+  created() {
+    this.init()
+  },
+  methods: {
+    async init() {
+      // start loading
+      this.$emit('setLoader', true)
+      
+      await someAsyncProcess()
+      
+      // stop loading
+      this.$emit('setLoader', false)
+    },
   },
 }
 ```
