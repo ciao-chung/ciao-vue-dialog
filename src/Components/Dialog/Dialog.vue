@@ -6,7 +6,8 @@
 
     <!--title-->
     <div ciao-vue-dialog="title" :class="config.style">
-      {{config.title}}
+      <span>{{config.title}}</span>
+      <ComponentLoader v-if="loading"></ComponentLoader>
     </div>
 
     <!--body-->
@@ -15,6 +16,7 @@
 
       <component
         v-if="config.component"
+        @setLoader="setLoader"
         @commitAccept="onAccept"
         @commitDismiss="onDismiss"
         @updateData="updateData"
@@ -43,6 +45,7 @@
 </template>
 
 <script>
+import ComponentLoader from 'Components/Loader.vue'
 import { events } from 'Components/events'
 import 'jquery-mousewheel'
 export default {
@@ -71,6 +74,8 @@ export default {
         md: 500,
         sm: 300,
       },
+      loading: false,
+      error: null,
     }
   },
   created() {
@@ -115,23 +120,35 @@ export default {
           left: browserWidth*0.5 - dialogWidth/2
         })
     },
-    onAccept() {
+    async onAccept() {
+      await this.handle('accept')
       this.close()
-      if(!this.config.accept) return
-      if(!(this.config.accept.callback instanceof Function)) return
-      this.config.accept.callback(this.data)
     },
-    onDismiss() {
+    async onDismiss() {
+      await this.handle('dismiss')
       this.close()
-      if(!this.config.dismiss) return
-      if(!(this.config.dismiss.callback instanceof Function)) return
-      this.config.dismiss.callback(this.data)
+    },
+    async handle(type) {
+      if(!this.config[type]) return
+      if(!(this.config[type].callback instanceof Function)) return
+      this.setLoader(true)
+      try {
+        await this.config[type].callback(this.data)
+      } catch(error) {
+        this.error = error
+        console.error(error)
+      }
+      this.setLoader(false)
     },
     close() {
       this.$emit('close')
+      this.setLoader(false)
     },
     updateData(data) {
       this.$emit('updateData', data)
+    },
+    setLoader(value) {
+      this.loading = !!value
     },
   },
   computed: {
@@ -155,11 +172,15 @@ export default {
   watch: {
     active() {
       if(!this.active) return
+      this.setLoader(false)
       this.$nextTick(() => {
         this.setupMobileWidth()
         this.setupScroll()
       })
     },
+  },
+  components: {
+    ComponentLoader,
   },
 }
 </script>

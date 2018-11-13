@@ -1,12 +1,21 @@
 <template>
   <div>
-    <h2>Accept/Dismiss</h2>
-    <button class="btn btn-info btn-sm" @click="dialog">Accept/Dismiss</button>
-
     <div class="row">
-      <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4s">
+        <h2>Accept/Dismiss</h2>
+        <button class="btn btn-info btn-sm" @click="dialog">Accept/Dismiss</button>
+
         <div class="markdown-container">
-          <Snippet/>
+          <AcceptSnippet/>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4s">
+        <h2>Async Accept</h2>
+        <button class="btn btn-info btn-sm" @click="asyncAcceptDialog">Async Accept</button>
+
+        <div class="markdown-container">
+          <AsyncActionSnippet/>
         </div>
       </div>
     </div>
@@ -14,7 +23,8 @@
 </template>
 
 <script>
-import Snippet from './Action.md'
+import AcceptSnippet from './Action.md'
+import AsyncActionSnippet from './AsyncAction.md'
 export default {
   methods: {
     dialog() {
@@ -32,9 +42,24 @@ export default {
         },
       })
     },
+    asyncAcceptDialog() {
+      this.$dialog({
+        title: 'Async Accept',
+        accept: {
+          callback() {
+            return new Promise(resolve => {
+              setTimeout(() => {
+                resolve()
+              }, 3000)
+            })
+          },
+        },
+      })
+    },
   },
   components: {
-    Snippet,
+    AcceptSnippet,
+    AsyncActionSnippet,
   },
 }
 </script>
