@@ -15,7 +15,16 @@
         <button class="btn btn-info btn-sm" @click="asyncAcceptDialog">Async Accept</button>
 
         <div class="markdown-container">
-          <AsyncActionSnippet/>
+          <ActionAsyncSnippet/>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4s">
+        <h2>Handle Error in Action</h2>
+        <button class="btn btn-info btn-sm" @click="handleErrorDialog">Handle Error in Action</button>
+
+        <div class="markdown-container">
+          <ActionErrorSnippet/>
         </div>
       </div>
     </div>
@@ -24,7 +33,9 @@
 
 <script>
 import AcceptSnippet from './Action.md'
-import AsyncActionSnippet from './AsyncAction.md'
+import ActionAsyncSnippet from './ActionAsync.md'
+import ActionErrorSnippet from './ActionError.md'
+import CatchError from 'Resource/Example/Action/CatchError.vue'
 export default {
   methods: {
     dialog() {
@@ -47,9 +58,26 @@ export default {
         title: 'Async Accept',
         accept: {
           callback() {
-            return new Promise(resolve => {
+            return new Promise((resolve, reject) => {
               setTimeout(() => {
                 resolve()
+              }, 3000)
+            })
+          },
+        },
+      })
+    },
+    handleErrorDialog() {
+      this.$dialog({
+        title: 'Handle Error in Action',
+        component: CatchError,
+        accept: {
+          callback() {
+            return new Promise((resolve, reject) => {
+              setTimeout(() => {
+                reject({
+                  foo: 'bar',
+                })
               }, 3000)
             })
           },
@@ -59,7 +87,8 @@ export default {
   },
   components: {
     AcceptSnippet,
-    AsyncActionSnippet,
+    ActionAsyncSnippet,
+    ActionErrorSnippet,
   },
 }
 </script>

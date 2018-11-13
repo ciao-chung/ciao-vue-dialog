@@ -21,6 +21,7 @@
         @commitDismiss="onDismiss"
         @updateData="updateData"
         :meta="meta"
+        :error="error"
         :data="data"
         :is="config.component" />
     </div>
@@ -121,8 +122,12 @@ export default {
         })
     },
     async onAccept() {
-      await this.handle('accept')
-      this.close()
+      try {
+        await this.handle('accept')
+        this.close()
+      } catch (error) {
+        console.error(error)
+      }
     },
     async onDismiss() {
       await this.handle('dismiss')
@@ -134,21 +139,26 @@ export default {
       this.setLoader(true)
       try {
         await this.config[type].callback(this.data)
+        this.setLoader(false)
       } catch(error) {
+        this.setLoader(false)
         this.error = error
-        console.error(error)
+        throw error
       }
-      this.setLoader(false)
     },
     close() {
       this.$emit('close')
-      this.setLoader(false)
+      this.reset()
     },
     updateData(data) {
       this.$emit('updateData', data)
     },
     setLoader(value) {
       this.loading = !!value
+    },
+    reset() {
+      this.setLoader(false)
+      this.error = null
     },
   },
   computed: {
@@ -172,7 +182,7 @@ export default {
   watch: {
     active() {
       if(!this.active) return
-      this.setLoader(false)
+      this.reset()
       this.$nextTick(() => {
         this.setupMobileWidth()
         this.setupScroll()

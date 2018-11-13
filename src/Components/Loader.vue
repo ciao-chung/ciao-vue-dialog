@@ -12,7 +12,7 @@ export default {
 </script>
 
 <style lang="sass" type="text/sass" scoped>
-$size: 40px
+$size: 20px
 .loader
   display: inline-block
   position: relative
@@ -20,7 +20,7 @@ $size: 40px
   height: $size
   div
     position: absolute
-    top: 27px
+    top: 7px
     width: 11px
     height: 11px
     border-radius: 50%

@@ -466,3 +466,57 @@ export default {
   },
 }
 ```
+
+### Action Error
+
+When some error throw from actions(accept/dismiss) callback.
+
+Dialog component will catch this error and pass it to your custom component.
+
+You can get and handle **error** property in your custom component.
+
+**Script**
+
+```javascript
+this.$dialog({
+  title: 'Handle Error in Action',
+  component: CustomComponent,
+  accept: {
+    callback() {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          reject({
+            reason1: 'some error message',
+            reason2: 'another error message',
+          })
+        }, 3000)
+      })
+    },
+  },
+})
+```
+
+**CustomComponent**
+
+```html
+<template>
+  <div>
+    <input type="text">
+    
+    <div v-if="error" style="color: red">
+      <p>{{error.reason1}}</p>    
+      <p>{{error.reason2}}</p>    
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    error: {
+      default: () => null,
+    },
+  },
+}
+</script>
+```
