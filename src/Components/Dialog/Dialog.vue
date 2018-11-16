@@ -20,6 +20,7 @@
         @commitAccept="onAccept"
         @commitDismiss="onDismiss"
         @updateData="updateData"
+        :loading="loading"
         :meta="meta"
         :error="error"
         :data="data"
