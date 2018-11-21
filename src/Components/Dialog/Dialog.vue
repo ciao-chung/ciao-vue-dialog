@@ -123,6 +123,8 @@ export default {
         })
     },
     async onAccept() {
+      if(this.loading == true) return
+
       try {
         await this.handle('accept')
         this.close()
