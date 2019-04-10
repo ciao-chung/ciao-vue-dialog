@@ -112,6 +112,19 @@ this.$dialog({
 })
 ```
 
+## closeCallback
+
+> Function
+
+You can do something by using closeCallback property
+
+```javascript
+this.$dialog({
+  title: 'Close Callback',
+  closeCallback: () => alert('CloseCallback'),
+})
+```
+
 ## size
 
 > String
