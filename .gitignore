@@ -20,5 +20,4 @@ prod/*
 !prod/.npmingore
 !prod/.package.json
 !prod/.yarn.lock
-
-
+!prod/dist
