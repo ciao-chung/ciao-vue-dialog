@@ -10,6 +10,11 @@
       <AutoCloseExample/>
     </div>
 
+    <!--CloseCallback-->
+    <div class="block" block="close-callback">
+      <CloseCallbackExample/>
+    </div>
+
     <!--Style-->
     <div class="block" block="style">
       <StyleExample/>
@@ -39,6 +44,7 @@ import jump from 'jump.js'
 import Prismjs from 'prismjs'
 import PrismjsLoadLanguages from 'prismjs/components/index.js'
 import BaseExample from 'Resource/Example/Base/Base.vue'
+import CloseCallbackExample from 'Resource/Example/CloseCallback/CloseCallback.vue'
 import AutoCloseExample from 'Resource/Example/AutoClose/AutoClose.vue'
 import SizeExample from 'Resource/Example/Size/Size.vue'
 import ActionExample from 'Resource/Example/Action/Action.vue'
@@ -82,6 +88,7 @@ export default {
   },
   components: {
     BaseExample,
+    CloseCallbackExample,
     AutoCloseExample,
     StyleExample,
     SizeExample,

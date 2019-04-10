@@ -59,6 +59,7 @@ export default {
       this.config.content = options.content || null
       this.config.size = options.size || 'md'
       this.config.close = !isNaN(options.close) ? options.close : false
+      this.config.closeCallback = options.closeCallback || null
       this.config.component = options.component || null
 
       this.setAccept(options.accept)
@@ -110,6 +111,7 @@ export default {
     },
     close() {
       this.active = false
+      if(this.config.closeCallback) this.config.closeCallback()
       window.removeEventListener('keydown', this.setupKeyEvent)
     },
     setupKeyEvent(event) {
