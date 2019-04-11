@@ -1,6 +1,6 @@
 <template>
   <div ciao-vue-dialog="dialog-wrap" :active="active">
-    <div ciao-vue-dialog="overlay" :active="active" @click="close"></div>
+    <div ciao-vue-dialog="overlay" :active="active" @click="close(true)"></div>
 
     <ComponentDialog
       ref="dialog"
@@ -107,11 +107,13 @@ export default {
     handleTimeout() {
       clearTimeout(this.closeTimeout)
       if(!this.config.close) return
-      this.closeTimeout = setTimeout(this.close , this.config.close)
+      this.closeTimeout = setTimeout(() => {
+        this.close(true)
+      }, this.config.close)
     },
-    close() {
+    close(native = false) {
       this.active = false
-      if(this.config.closeCallback) this.config.closeCallback()
+      if(native == true && this.config.closeCallback) this.config.closeCallback()
       window.removeEventListener('keydown', this.setupKeyEvent)
     },
     setupKeyEvent(event) {

@@ -1,6 +1,6 @@
 <template>
   <div ciao-vue-dialog="dialog" :class="dialogClass" v-if="active" :size="config.size">
-    <div ciao-vue-dialog="close-button" @click="close">
+    <div ciao-vue-dialog="close-button" @click="close(true)">
       &times;
     </div>
 
@@ -149,8 +149,8 @@ export default {
         throw error
       }
     },
-    close() {
-      this.$emit('close')
+    close(native = false) {
+      this.$emit('close', native)
       this.reset()
     },
     updateData(data) {
