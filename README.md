@@ -1,3 +1,5 @@
+
+
 # Ciao Vue Dialog
 
 > Vue Dialog Component
@@ -77,7 +79,7 @@ export default {
 
 You can setup style by **style** property
 
-There has four Bootstrap style(success, primary, info, warning, danger)
+There has five Bootstrap style(success, primary, info, warning, danger)
 
 ```javascript
 this.$dialog({
